@@ -11,7 +11,8 @@
         android:theme="@style/Theme.KvantProject">
         <activity
             android:name=".ActivityTwoSettings"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
