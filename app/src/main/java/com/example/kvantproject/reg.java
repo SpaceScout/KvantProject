@@ -11,14 +11,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class reg extends AppCompatActivity {
+public class reg extends AppCompatActivity implements View.OnClickListener {
 
     private EditText username;
     private EditText password;
     private Button login;
-    private TextView loginLocked;
-    private TextView attempts;
-    private TextView numberOfAttempts;
 
     //число для подсчета попыток
     int numberOfRemainingLoginAttempts = 10;
@@ -26,25 +23,21 @@ public class reg extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.reg);
 
         username = findViewById(R.id.edit_user);
-        password = (EditText) findViewById(R.id.edit_password);
-        login = (Button) findViewById(R.id.button_login);
-        loginLocked = (TextView) findViewById(R.id.login_locked);
-        attempts = (TextView) findViewById(R.id.attempts);
-        numberOfAttempts = (TextView) findViewById(R.id.number_of_attempts);
-        numberOfAttempts.setText(Integer.toString(numberOfRemainingLoginAttempts));
+        password = findViewById(R.id.edit_password);
+        Button login = findViewById(R.id.button_login);
 
+        login.setOnClickListener(this);
     }
-
-    public void Login(View view) {
+    @Override
+    public void onClick(View v){
         // Если введенные логин и пароль будут словом "admin",
         // показываем Toast сообщение об успешном входе:
         if (username.getText().toString().equals("admin") &&
                 password.getText().toString().equals("admin")) {
             Toast.makeText(getApplicationContext(), "Вы успешно вошли", Toast.LENGTH_SHORT).show();
-
             // Выполняем переход на другой экран:
             Intent intent = new Intent(reg.this, MainActivity.class);
             startActivity(intent);
@@ -54,20 +47,6 @@ public class reg extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Неправильные данные", Toast.LENGTH_SHORT).show();
             numberOfRemainingLoginAttempts--;
 
-            // Делаем видимыми текстовые поля, указывающие на количество оставшихся попыток:
-            attempts.setVisibility(View.VISIBLE);
-            numberOfAttempts.setVisibility(View.VISIBLE);
-            numberOfAttempts.setText(Integer.toString(numberOfRemainingLoginAttempts));
-
-            // Когда выполнено 3 безуспешных попытки залогиниться,
-            // делаем видимым текстовое поле с надписью, что все пропало и выставляем
-            // кнопке настройку невозможности нажатия setEnabled(false):
-            if (numberOfRemainingLoginAttempts == 0) {
-                login.setEnabled(false);
-                loginLocked.setVisibility(View.VISIBLE);
-                loginLocked.setBackgroundColor(Color.RED);
-                loginLocked.setText("Вход заблокирован");
             }
-        }
     }
 }
