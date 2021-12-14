@@ -10,5 +10,6 @@
     <color name="dark">#222d45</color>
     <color name="darkgrey">#808080</color>
     <color name="MilkWhite">#FEFCFF</color>
+    <color name="primaryColor">#2c2c2d</color>
 
 </resources>
