@@ -2,13 +2,12 @@
     <string name="app_name">KvantProject</string>
     <string name="settings">Settings</string>
     <string name="Oplata">Pay</string>
-    <string name="enter_name">введите имя</string>
+    <string name="enter_name">Login</string>
     <string name="enter">Войти</string>
-    <string name="poprobovat">Попыток:</string>
     <string name="autorisation">Авторизация</string>
     <string name="User">Пользователь:</string>
     <string name="password">Пароль:</string>
-    <string name="enter_password">введите пароль</string>
+    <string name="enter_password">Password</string>
     <string name="chooseTheme">Выбор темы</string>
     <string name="changeOplata">Изменить способ оплаты</string>
     <string name="lightOn">Включить светлую тему</string>

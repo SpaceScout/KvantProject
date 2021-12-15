@@ -12,7 +12,6 @@
         android:id="@+id/changeOplata"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="4dp"
         android:background="@color/dark"
         android:drawableEnd="@drawable/ic_baseline_arrow_forward_ios_24"
         android:gravity="left|center_vertical"

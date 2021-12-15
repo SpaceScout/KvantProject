@@ -9,6 +9,7 @@
     tools:context=".ChooseTheme">
 
     <RadioGroup
+        android:id="@+id/theme_choose"
         android:layout_width="398dp"
         android:layout_height="96dp"
         app:layout_constraintEnd_toEndOf="parent"

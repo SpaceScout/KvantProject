@@ -15,7 +15,7 @@ public class ActivityTwoSettings extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_two_settings);
 
-        Button changeOplata = findViewById(R.id.changeOplata);
+        Button changeOplata = findViewById(R.id.choose_theme);
         changeOplata.setOnClickListener(this);
     }
 

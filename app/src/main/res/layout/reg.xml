@@ -11,83 +11,62 @@
         android:id="@+id/Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="monospace"
         android:text="@string/autorisation"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/user_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="116dp"
-        android:text="@string/User"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/password_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="60dp"
-        android:text="@string/password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_text" />
-
     <Button
         android:id="@+id/button_login"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="94dp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
         android:text="@string/enter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_password" />
-
-    <TextView
-        android:id="@+id/attempts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="48dp"
-        android:text="@string/poprobovat"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_text" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_password"
+        android:background="@drawable/fileds"/>
 
     <EditText
         android:id="@+id/edit_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="34dp"
+        android:layout_marginLeft="40sp"
+        android:layout_marginRight="40sp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="@string/enter_name"
-        android:textColorHint="#78909C"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/edit_password"
+        android:textColorHint="#78909C"
         app:layout_constraintEnd_toEndOf="parent"
-        android:autofillHints="" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/fileds"
+        app:layout_constraintTop_toBottomOf="@+id/Login" />
 
     <EditText
         android:id="@+id/edit_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="40dp"
-        android:autofillHints=""
         android:ems="10"
         android:hint="@string/enter_password"
         android:inputType="textPassword"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_user"
         tools:ignore="TextContrastCheck,TextContrastCheck" />
 
     <TextView
