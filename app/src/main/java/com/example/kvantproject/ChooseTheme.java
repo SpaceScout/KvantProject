@@ -13,9 +13,9 @@ public class ChooseTheme extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        int theme = sp.getInt("THEME", R.);
-        setTheme(theme);
+        //SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        //int theme = sp.getInt("THEME", R.);
+        //setTheme(theme);
     }
 
 
