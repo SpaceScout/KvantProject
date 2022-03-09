@@ -12,5 +12,6 @@
     <string name="changeOplata">Изменить способ оплаты</string>
     <string name="lightOn">Включить светлую тему</string>
     <string name="darkOn">Включить темную тему</string>
+    <string name="regisrt">Регистрация</string>
 
 </resources>
