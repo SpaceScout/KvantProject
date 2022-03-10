@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark"
     tools:context=".ChooseTheme">
 
     <RadioGroup
@@ -23,7 +22,7 @@
             android:checked="true"
             android:minHeight="48dp"
             android:text="@string/lightOn"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
         <RadioButton
@@ -32,7 +31,7 @@
             android:layout_height="wrap_content"
             android:minHeight="48dp"
             android:text="@string/darkOn"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
 
     </RadioGroup>
 
