@@ -53,7 +53,7 @@ public class reg extends AppCompatActivity implements View.OnClickListener {
 
         if(settings.getBoolean("hasLoggedIn", false))
         {
-            setContentView(R.layout.activity_main);
+            startActivity(intent);
             Log.i("Mlog","корорче сработало по резюму");
         }
 

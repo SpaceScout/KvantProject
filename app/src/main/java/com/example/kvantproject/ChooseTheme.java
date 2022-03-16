@@ -8,6 +8,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class ChooseTheme extends AppCompatActivity {
 
@@ -24,15 +25,11 @@ public class ChooseTheme extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.light_theme:
-                        //getApplication().setTheme(R.style.Theme_MyTheme);
-                        //recreate();
-                        setTheme(R.style.Theme_MyTheme);
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                         toast1.show();
                         break;
                     case R.id.dark_theme:
-                        //getApplication().setTheme(R.style.Theme_MyThemeNight);
-                        //recreate();
-                        setTheme(R.style.Theme_MyThemeNight);
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                         toast2.show();
                         break;
                     default:
