@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">KvantProject</string>
-    <string name="settings">Settings</string>
-    <string name="Oplata">Pay</string>
+    <string name="settings">Настройки</string>
+    <string name="Oplata">Оплата проезда</string>
     <string name="enter_name">Login</string>
     <string name="enter">Войти</string>
     <string name="autorisation">Авторизация</string>
@@ -13,5 +13,6 @@
     <string name="lightOn">Включить светлую тему</string>
     <string name="darkOn">Включить темную тему</string>
     <string name="regisrt">Регистрация</string>
+    <string name="oplata2x">Оплатить</string>
 
 </resources>

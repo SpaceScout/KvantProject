@@ -3,6 +3,8 @@ package com.example.kvantproject;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -11,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 public class ChooseTheme extends AppCompatActivity {
+    public static final String APP_PREFERENCES = "theme_prefs";
+    final String KEY_RADIOBUTTON_INDEX = "SAVED_RADIO_BUTTON_INDEX";
+    RadioGroup radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,25 +23,22 @@ public class ChooseTheme extends AppCompatActivity {
         setContentView(R.layout.choose_theme);
         Toast toast1 = Toast.makeText(getApplicationContext(), "Выбрана светлая тема", Toast.LENGTH_LONG);
         Toast toast2 = Toast.makeText(getApplicationContext(), "Выбрана темная тема", Toast.LENGTH_LONG);
+        Button light_button = findViewById(R.id.button);
+        Button dark_button = findViewById(R.id.button2);
 
-        RadioGroup themeChooser = findViewById(R.id.theme_choose);
-        themeChooser.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        light_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.light_theme:
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                        toast1.show();
-                        break;
-                    case R.id.dark_theme:
-                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                        toast2.show();
-                        break;
-                    default:
-                        break;
-                }
+            public void onClick(View view) {
+                //SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+                toast1.show();
+            }
+        });
+        dark_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                toast2.show();
             }
         });
     }
-
 }

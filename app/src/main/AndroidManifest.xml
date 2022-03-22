@@ -32,6 +32,10 @@
             android:exported="true"
             android:parentActivityName=".ActivityTwoSettings">
         </activity>
+        <activity
+            android:name=".oplata"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

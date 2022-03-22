@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +23,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         Button settingsBtn = findViewById(R.id.settings);
-        settingsBtn.setOnClickListener(this);
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ActivityTwoSettings.class);
+                startActivity(intent);
+            }
+        });
 
-        }
+        Button oplata1 = findViewById(R.id.Oplatit);
+        oplata1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, oplata.class);
+                startActivity(intent);
+            }
+        });
 
-    @Override
-    public void onClick(View v){
-        Intent intent = new Intent(this, ActivityTwoSettings.class);
-        startActivity(intent);
-        }
     }
+}
