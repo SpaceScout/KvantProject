@@ -30,13 +30,14 @@
         android:layout_marginTop="94dp"
         android:layout_marginRight="10sp"
         android:background="@drawable/fileds"
+        android:onClick="onClickSignIn"
         android:text="@string/enter"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_password" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_password1" />
 
     <Button
         android:id="@+id/registr"
@@ -52,27 +53,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.238"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_password" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_password1" />
 
     <EditText
-        android:id="@+id/edit_user"
+        android:id="@+id/edit_email1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40sp"
-        android:layout_marginRight="40sp"
         android:layout_marginTop="40dp"
+        android:layout_marginRight="40sp"
+        android:background="@drawable/fileds"
         android:ems="10"
-        android:hint="@string/enter_name"
+        android:hint="@string/enter_email"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/fileds"
         app:layout_constraintTop_toBottomOf="@+id/Login" />
 
     <EditText
-        android:id="@+id/edit_password"
+        android:id="@+id/edit_password1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -86,7 +87,7 @@
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_user"
+        app:layout_constraintTop_toBottomOf="@+id/edit_email1"
         tools:ignore="TextContrastCheck,TextContrastCheck" />
 
     <TextView
