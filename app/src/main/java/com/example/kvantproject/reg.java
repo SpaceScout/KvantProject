@@ -72,7 +72,6 @@ public class reg extends AppCompatActivity{
         if(settings.getBoolean("hasLoggedIn", false))
         {
             startActivity(intent);
-            Log.i("Mlog","корорче сработало по резюму");
         }
 
     }
