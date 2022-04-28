@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity{
         oplata1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, wifiSearch.class);
+                Intent intent = new Intent(MainActivity.this, wif_p2p_iSearch.class);
                 startActivity(intent);
             }
         });

@@ -16,8 +16,8 @@
     <string name="regisrt">Регистрация</string>
     <string name="oplata2x">Оплатить</string>
     <string name="zaregisrt">Зарегистрироваться</string>
-    <string name="wifiTExt">Сперва подключитесь к WIFI сети вашего автобуса</string>
-    <string name="wifiSearch">Нажмите чтобы показать все сети WIFI</string>
+    <string name="wifiTExt">Сперва подключитесь к сети вашего автобуса</string>
+    <string name="wifiSearch">Показать все сети</string>
     <string name="wifiHint">Введите пароль для выбранной сети</string>
 
 
