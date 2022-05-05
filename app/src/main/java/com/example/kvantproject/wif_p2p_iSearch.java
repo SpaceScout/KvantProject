@@ -6,26 +6,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.net.wifi.ScanResult;
-import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pDeviceList;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,28 +45,29 @@ public class wif_p2p_iSearch extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wifi_search);
 
+
         init();
         wifiListener();
     }
+
+    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 777;
 
     private void wifiListener() {
         btn_onOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (wifiManager.isWifiEnabled()) {
-                    wifiManager.setWifiEnabled(false);
-                    btn_onOff.setText("ON");
-                } else {
-                    wifiManager.setWifiEnabled(true);
-                    btn_onOff.setText("OFF");
-                }
+                Intent intent = new Intent(Settings.ACTION_WIFI_SETTINGS);
+                startActivityForResult(intent, 1);
             }
-
         });
 
         btnScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (ActivityCompat.checkSelfPermission(wif_p2p_iSearch.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(wif_p2p_iSearch.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIONS_REQUEST_LOCATION);
+                    return;
+                }
                 mManager.discoverPeers(mChannel, new WifiP2pManager.ActionListener() {
                     @Override
                     public void onSuccess() {
@@ -93,7 +89,7 @@ public class wif_p2p_iSearch extends AppCompatActivity {
         btnScan = findViewById(R.id.button_scan);
         btn_connect = findViewById(R.id.button_connect);
         btn_onOff = findViewById(R.id.button_onOff);
-        List = (ListView) findViewById(R.id.List);
+        List = (ListView) findViewById(R.id.p2p_list);
 
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
@@ -117,6 +113,7 @@ public class wif_p2p_iSearch extends AppCompatActivity {
         public void onPeersAvailable(WifiP2pDeviceList peerList) {
             if(!peerList.getDeviceList().equals(peers))
             {
+                Toast.makeText(getApplicationContext(), "робит блять или нет я устал уже", Toast.LENGTH_SHORT).show();
                 peers.clear();
                 peers.addAll(peerList.getDeviceList());
 
