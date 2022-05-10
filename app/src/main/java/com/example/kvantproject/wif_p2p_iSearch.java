@@ -7,21 +7,26 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
+import android.net.wifi.p2p.WifiP2pConfig;
 import android.net.wifi.p2p.WifiP2pDevice;
 import android.net.wifi.p2p.WifiP2pDeviceList;
+import android.net.wifi.p2p.WifiP2pInfo;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +36,8 @@ public class wif_p2p_iSearch extends AppCompatActivity {
     List<WifiP2pDevice> peers = new ArrayList<WifiP2pDevice>();
     String[] deviceNameArray;
     WifiP2pDevice[] deviceArray;
-    ListView List;
+    ListView p2p_list;
+    TextView constat;
 
     BroadcastReceiver mReceiver;
     IntentFilter mIntentFilter;
@@ -50,7 +56,7 @@ public class wif_p2p_iSearch extends AppCompatActivity {
         wifiListener();
     }
 
-    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 777;
+    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 1;
 
     private void wifiListener() {
         btn_onOff.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +78,7 @@ public class wif_p2p_iSearch extends AppCompatActivity {
                     @Override
                     public void onSuccess() {
                         Toast.makeText(getApplicationContext(), "Начался поиск сетей", Toast.LENGTH_SHORT).show();
+                        constat.setText("поиск сетей да");
                     }
 
                     @Override
@@ -81,15 +88,39 @@ public class wif_p2p_iSearch extends AppCompatActivity {
                 });
             }
         });
+
+        p2p_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                final WifiP2pDevice device = deviceArray[i];
+                WifiP2pConfig config = new WifiP2pConfig();
+                config.deviceAddress = device.deviceAddress;
+                if (ActivityCompat.checkSelfPermission(wif_p2p_iSearch.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(wif_p2p_iSearch.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIONS_REQUEST_LOCATION);
+                    return;
+                }
+                mManager.connect(mChannel, config, new WifiP2pManager.ActionListener() {
+                    @Override
+                    public void onSuccess() {
+                        constat.setText("Подключилось к " + device.deviceAddress);
+                    }
+
+                    @Override
+                    public void onFailure(int reason) {
+                        constat.setText("Произошла ошибка при подключении");
+                    }
+                });
+
+            }
+        });
     }
-
-
 
     private void init(){
         btnScan = findViewById(R.id.button_scan);
         btn_connect = findViewById(R.id.button_connect);
         btn_onOff = findViewById(R.id.button_onOff);
-        List = (ListView) findViewById(R.id.p2p_list);
+        p2p_list = (ListView) findViewById(R.id.p2p_list);
+        constat = findViewById(R.id.conStat);
 
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
@@ -113,7 +144,6 @@ public class wif_p2p_iSearch extends AppCompatActivity {
         public void onPeersAvailable(WifiP2pDeviceList peerList) {
             if(!peerList.getDeviceList().equals(peers))
             {
-                Toast.makeText(getApplicationContext(), "робит блять или нет я устал уже", Toast.LENGTH_SHORT).show();
                 peers.clear();
                 peers.addAll(peerList.getDeviceList());
 
@@ -129,13 +159,27 @@ public class wif_p2p_iSearch extends AppCompatActivity {
                 }
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, deviceNameArray);
-                List.setAdapter(adapter);
+                p2p_list.setAdapter(adapter);
+                constat.setText("найдено " + index +" сетей автобусов");
             }
 
             if(peers.size() == 0)
             {
-                Toast.makeText(getApplicationContext(), "Не найдено ни одной сети автобуса", Toast.LENGTH_SHORT).show();
-                return;
+                constat.setText("Не найдено не одной сети");
+            }
+        }
+    };
+
+    WifiP2pManager.ConnectionInfoListener connectionInfoListener = new WifiP2pManager.ConnectionInfoListener() {
+        @Override
+        public void onConnectionInfoAvailable(WifiP2pInfo info) {
+            final InetAddress groupOwnerAdress = info.groupOwnerAddress;
+            if(info.groupFormed && info.isGroupOwner)
+            {
+                constat.setText("Host");
+            }else
+            {
+                constat.setText("Client");
             }
         }
     };
