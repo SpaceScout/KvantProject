@@ -117,7 +117,6 @@ public class wif_p2p_iSearch extends AppCompatActivity {
 
     private void init(){
         btnScan = findViewById(R.id.button_scan);
-        btn_connect = findViewById(R.id.button_connect);
         btn_onOff = findViewById(R.id.button_onOff);
         p2p_list = (ListView) findViewById(R.id.p2p_list);
         constat = findViewById(R.id.conStat);
@@ -162,7 +161,6 @@ public class wif_p2p_iSearch extends AppCompatActivity {
                 p2p_list.setAdapter(adapter);
                 constat.setText("найдено " + index +" сетей автобусов");
             }
-
             if(peers.size() == 0)
             {
                 constat.setText("Не найдено не одной сети");
